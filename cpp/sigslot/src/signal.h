@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <algorithm>
 
 #include "connection.h"
 #include "slot.h"
@@ -45,12 +46,12 @@ namespace S
       {
         for (auto& f : mSlots)
         {
-          (*f)(std::forward<Ts>(ts)...);
+          (*f)(ts...);
         }
       }
 
     private:
-      std::vector<std::shared_ptr<SlotTyp>> mSlots;
+      std::list<std::shared_ptr<SlotTyp>> mSlots;
       ConnectionId mConnIdCounter;
   };
 }
