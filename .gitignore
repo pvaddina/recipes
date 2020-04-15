@@ -6,6 +6,7 @@
 .vscode
 .opt.json
 
+vs/
 build/
 auto/
 cpp/hopinic/

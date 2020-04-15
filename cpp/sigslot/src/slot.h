@@ -15,7 +15,7 @@ namespace S
       friend Signal<FN>;
       using ConnTyp = Connection<FN>;
 
-      Slot(const ConnectionId inId, FN inFn) : mConnId(inId), mConnStatus(ConnectionState::STATE_CONNECTED), mFn(inFn) {}
+      Slot(const ConnectionId inId, std::function<FN>& inFn) : mConnId(inId), mConnStatus(ConnectionState::STATE_CONNECTED), mFn(inFn) {}
 
       template <typename... Ts>
       void operator()(Ts&&... ts)
@@ -49,7 +49,7 @@ namespace S
     private:
       ConnectionId mConnId = INVALID_CONN_ID;
       ConnectionState mConnStatus = ConnectionState::STATE_INVALID;
-      FN* mFn;
+      std::function<FN> mFn;
   };
 }
 

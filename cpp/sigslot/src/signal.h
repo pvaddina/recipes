@@ -20,7 +20,7 @@ namespace S
       {
       }
 
-      ConnTyp Connect(FN f)
+      ConnTyp Connect(std::function<FN> f)
       {
         mSlots.emplace_back(new SlotTyp(++mConnIdCounter, f));
         return ConnTyp(mSlots.back());
